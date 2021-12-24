@@ -2,7 +2,7 @@ syntax = "proto3";
 
 import "google/protobuf/empty.proto";
 
-option go_package = "github.com/exepirit/todo-app/internal/api/grpc";
+option go_package = "github.com/exepirit/todo-app/proto";
 
 service TodoLists {
 	rpc GetUserLists(GetListsRequest) returns (TodoListArray) {}
