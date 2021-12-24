@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/exepirit/todo-app/internal/api/grpc";
+
+service TodoLists {
+	rpc GetUserLists(GetListsRequest) returns (TodoListArray) {}
+	rpc Create(CreateRequest) returns (TodoList) {}
+	rpc PutItem(PutItemRequest) returns (google.protobuf.Empty);
+}
+
+message TodoList {
+	string id = 1;
+	User owner = 2;
+	repeated TodoItem items = 3;
+}
+
+message User {
+	string id = 1;
+	string name = 2;
+}
+
+message TodoItem {
+	string text = 1;
+}
+
+message TodoListArray {
+	repeated TodoList lists = 1;
+}
+
+message GetListsRequest {
+	string userId = 1;
+}
+
+message CreateRequest {
+	User owner = 1;
+}
+
+message PutItemRequest {
+	string listId = 1;
+	TodoItem item = 2;
+}
