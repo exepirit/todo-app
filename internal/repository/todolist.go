@@ -9,16 +9,8 @@ import (
 	"github.com/google/uuid"
 )
 
-// ITodoListRepo provides TODO lists storage.
-type ITodoListRepo interface {
-	GetByUserID(ctx context.Context, userId uuid.UUID) ([]*domain.TodoList, error)
-	GetByID(ctx context.Context, id uuid.UUID) (*domain.TodoList, error)
-	Put(ctx context.Context, todolist *domain.TodoList) error
-	Update(ctx context.Context, todolist *domain.TodoList) error
-}
-
 // NewMemoryTodoList creates new repository with in-memory storage.
-func NewMemoryTodoList() ITodoListRepo {
+func NewMemoryTodoList() domain.IRepository {
 	return &memoryTodoListRepo{
 		store: make(map[uuid.UUID]domain.TodoList),
 	}
