@@ -5,8 +5,6 @@ import (
 	"fmt"
 
 	domain "github.com/exepirit/todo-app/internal/domain/todolist"
-	"github.com/exepirit/todo-app/internal/repository"
-
 	"github.com/google/uuid"
 )
 
