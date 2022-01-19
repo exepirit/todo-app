@@ -1,13 +1,13 @@
 package todolist
 
-// IFactory incapsulates aggregate creation.
-type ITodoListFactory interface {
+// IFactory encapsulates aggregate creation.
+type IFactory interface {
 	// CreateEmpty creates new TodoList aggregate instance.
 	CreateEmpty(owner User) *TodoList
 }
 
 // NewTodoListFactory creates new factory.
-func NewTodoListFactory() ITodoListFactory {
+func NewTodoListFactory() IFactory {
 	return &factory{}
 }
 
