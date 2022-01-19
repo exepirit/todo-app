@@ -20,6 +20,11 @@ type IService interface {
 	PutItem(ctx context.Context, listId uuid.UUID, item *domain.TodoItem) error
 }
 
+// NewService creates new lists service.
+func NewService(todoListRepo domain.IRepository) IService {
+	return &service{todoLists: todoListRepo}
+}
+
 type service struct {
 	repo    repository.ITodoListRepo
 	factory domain.ITodoListFactory
